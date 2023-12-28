@@ -217,6 +217,12 @@ h2 {
   right: 10px;
   font-size: 30px;
   cursor: pointer;
+  color: #000;
+  transition: color 0.3s ease-in-out;
+}
+
+.modal-content .close:hover {
+  color: #b30707;
 }
 
 .modal-content button {

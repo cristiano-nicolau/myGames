@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong</title>
     <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="stylesheet" href="css/pong.css"> 
 
 </head>
 <body>
@@ -14,9 +14,38 @@
         <h1>Pong</h1>
     </div>
     <button id="go-back" onclick="voltar()">Go Back</button>
+    <button id="reset-game" onclick=" showOptionsModal()">Reset Game</button>
+    
+    <div class="modal" id="optionsModal">
+        <div class="options">
+            <button onclick="startGame(1)">1 Partida</button>
+            <button onclick="startGame(3)">3 Partidas</button>
+            <button onclick="startGame(5)">5 Partidas</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-area">
+        <div class="paddle" id="player1"></div>
+        <div class="paddle" id="player2"></div>
+        <div class="ball"></div>
+        <div class="score" id="score1">0</div>
+        <div class="score" id="score2">0</div>
+        <div class="score" id="game">Game </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h1 > Pong <span onclick="closemodal()" class="close">&times;</span></h1>
+            <p id="modal-message"></p>
+            <button onclick="endGame()">End Game</button>
+            <button onclick="playAgain()">Play Again</button>
+        </div>
+    </div>
     <div class="footer">
         <p>Developed by: <a href="https://github.com/cristiano-nicolau">cristiano-nicolau</a> &copy; 2024</p>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/pong.js"></script>
 </body>
 </html>
