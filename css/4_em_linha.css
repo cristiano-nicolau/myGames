@@ -1,0 +1,30 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 20px;
+    background-color: #ffffff00;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.column {
+    width: 80px;
+    height: 500px; /* Altura do tabuleiro pode ser ajustada */
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Para esconder as fichas que saem da coluna */
+}
+
+.chip {
+    width: 70px;
+    height: 70px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+

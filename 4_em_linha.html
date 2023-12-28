@@ -4,19 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4_in_line</title>
+    <title>Four in Line</title>
     <link rel="stylesheet" href="css/styles.css">
-
-
+    <link rel="stylesheet" href="css/4_em_linha.css">
 </head>
 <body>
     <div class="header">
         <h1>Four in Line</h1>
     </div>
     <button id="go-back" onclick="voltar()">Go Back</button>
+    <button id="reset-game" onclick="resetGame()">Reset Game</button>
+
+    <div class="board">
+        <div class="column" onclick="dropChip(0)"></div>
+        <div class="column" onclick="dropChip(1)"></div>
+        <div class="column" onclick="dropChip(2)"></div>
+        <div class="column" onclick="dropChip(3)"></div>
+        <div class="column" onclick="dropChip(4)"></div>
+        <div class="column" onclick="dropChip(5)"></div>
+        <div class="column" onclick="dropChip(6)"></div>
+    </div>
+    
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h1 > Four in Line <span onclick="closemodal()" class="close">&times;</span></h1>
+            <p id="modal-message"></p>
+            <button onclick="endGame()">End Game</button>
+            <button onclick="playAgain()">Play Again</button>
+        </div>
+    </div>
+    
     <div class="footer">
         <p>Developed by: <a href="https://github.com/cristiano-nicolau">cristiano-nicolau</a> &copy; 2024</p>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/4_em_linha.js"></script>
 </body>
 </html>
