@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background: linear-gradient(45deg, #1875b3, #b30707);
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-by-games {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px; 
+}
+
+.container {
+    width: 400px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.199);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.425);
+}
+
+.container:hover {
+    background-color: rgba(255, 255, 255, 0.25); /* Aumenta a opacidade para tornar o fundo ligeiramente mais claro */
+}
+
+
+.header {
+    margin-bottom: 40px;
+
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+h2 {
+    margin-bottom: 20px; /* Espaçamento entre o título do tipo de jogo e os links */
+    font-size: 30px;
+}
+
+.jogos {
+    display: inline-block; /* Garante que cada contêiner de jogos seja exibido em linha */
+    width: 65%; /* Define uma largura para que os contêineres fiquem lado a lado com um pequeno espaçamento entre eles */
+    vertical-align: top; /* Alinha-os ao topo */
+}
+
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+
+    color: #fff;
+    text-align: center;
+}
+   
+
+.card {
+    --bg: #f7f7f8;
+    --hover-bg: #FFE5F4;
+    --hover-text: #E50087;
+    max-width: 23ch;
+    text-align: center;
+    background: var(--bg);
+    padding: 2em;
+    padding-block: 1.8em;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: .3s cubic-bezier(.6,.4,0,1),transform .15s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.425);
+    margin-bottom: 15px;
+  }
+  
+
+  
+  .card > :not(span) {
+    transition: .3s cubic-bezier(.6,.4,0,1);
+  }
+  
+  .card > strong {
+    display: block;
+    font-size: 1.4rem;
+    letter-spacing: -.035em;
+  }
+  
+  .card span {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--hover-text);
+    border-radius: 5px;
+    font-weight: bold;
+    top: 100%;
+    transition: all .3s cubic-bezier(.6,.4,0,1);
+  }
+  
+  .card:hover span {
+    top: 0;
+    font-size: 1.2em;
+    
+  }
+  
+  .card:hover {
+    background: var(--hover-bg);
+  }
+  
+  .card:hover>div,.card:hover>strong {
+    opacity: 0;
+  }
+
+#go-back {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 20px;
+
+    color: #000000;
+    background-color: #ffffff;
+    font-size: 19px;
+    border-radius: 10px;
+    padding: 10px 25px;
+    cursor: pointer
+}
+
+#go-back:hover {
+    background-color: #b30707;
+    color: #ffffff;
+}
+
