@@ -2,30 +2,28 @@ let player1 = {
     element: document.getElementById("player1"),
     score: 0,
     direction: 0,
-    speed: 5
+    speed: 4
 };
 
 let player2 = {
     element: document.getElementById("player2"),
     score: 0,
     direction: 0,
-    speed: 5
+    speed: 4
 };
 
 let ball = {
     element: document.querySelector(".ball"),
     x: 390,
     y: 190,
-    speedX: 5,
-    speedY: 5
+    speedX: 1,
+    speedY: 1
 };
 
 let gameInProgress = false;
 let maxScore = 0;
 let currentGame = 1;
-let maxGame = 1;
-
-
+let totalGames = 1;
 
 document.addEventListener("DOMContentLoaded", function() {
     showOptionsModal();
@@ -42,43 +40,44 @@ function closeModal() {
 }
 
 function selectGameRounds(rounds) {
-    maxGame = rounds;
+    totalGames = rounds;
+    maxScore = rounds === 1 ? 1 : Math.ceil(rounds / 2); // Set maxScore based on the number of rounds
     resetGame();
     closeModal();
-    document.getElementById("game").innerText = `Game ${currentGame} of ${maxGame}`;
+    document.getElementById("game").innerText = `Game ${currentGame} of ${totalGames}`;
 }
 
 function startGame(rounds) {
-    maxScore = rounds;
+    player1.score = 0;
+    player2.score = 0;
+    updateScores();
     selectGameRounds(rounds);
     gameInProgress = true;
     document.addEventListener("keydown", handleKeyPress);
     document.addEventListener("keyup", handleKeyUp);
-    setTimeout(function() {
+    setTimeout(() => {
         moveBall();
-    }, 1000);
+    }, 1500);
 }
 
 function resetGame() {
-    player1.score = 0;
-    player2.score = 0;
-    updateScores();
     ball.x = 390;
     ball.y = 190;
-    ball.speedX = Math.random() > 0.5 ? 5 : -5;
-    ball.speedY = Math.random() > 0.5 ? 5 : -5;
+    ball.speedX = Math.random() > 0.5 ? 2 : -2;
+    ball.speedY = Math.random() > 0.5 ? 2 : -2;
     player1.element.style.top = "160px";
     player2.element.style.top = "160px";
     gameInProgress = true;
-
-}
+    setTimeout(() => {
+        moveBall();
+    }, 1500);}
 
 function handleKeyPress(event) {
     if (event.key === "ArrowUp") {
         player2.direction = -1;
-    } else if (event.key === "ArrowDown") {
+    } else if (event.key === "ArrowDown" ) {
         player2.direction = 1;
-    } else if (event.key === "w") {
+    } else if (event.key === "w" ) {
         player1.direction = -1;
     } else if (event.key === "s") {
         player1.direction = 1;
@@ -100,7 +99,7 @@ function moveBall() {
     ball.y += ball.speedY;
 
     if (ball.y <= 0 || ball.y >= 380) {
-        ball.speedY *= -1;
+        ball.speedY *= -1.1;
     }
 
     if (ball.x <= 0 || ball.x >= 780) {
@@ -115,24 +114,20 @@ function moveBall() {
     }
 
     if (ball.x <= 20 && ball.y >= parseInt(player1.element.style.top) && ball.y <= (parseInt(player1.element.style.top) + 60)) {
-        ball.speedX *= -1;
+        ball.speedX *= -1.1;
     }
 
     if (ball.x >= 760 && ball.y >= parseInt(player2.element.style.top) && ball.y <= (parseInt(player2.element.style.top) + 60)) {
-        ball.speedX *= -1;
+        ball.speedX *= -1.1;
     }
 
-
-
-    player1.element.style.top = `${parseInt(player1.element.style.top) + (player1.direction * player1.speed)}px`;
-    player2.element.style.top = `${parseInt(player2.element.style.top) + (player2.direction * player2.speed)}px`;
+    if (parseInt(player1.element.style.top) + (player1.direction * player1.speed) >= 0 && parseInt(player1.element.style.top) + (player1.direction * player1.speed)<=340) {  player1.element.style.top =`${parseInt(player1.element.style.top) + (player1.direction * player1.speed)}px`; }
+    if (parseInt(player2.element.style.top) + (player2.direction * player2.speed) >= 0 && parseInt(player2.element.style.top) + (player2.direction * player2.speed)<=340) {  player2.element.style.top =`${parseInt(player2.element.style.top) + (player2.direction * player2.speed)}px`; }
     ball.element.style.left = `${ball.x}px`;
     ball.element.style.top = `${ball.y}px`;
 
     requestAnimationFrame(moveBall);
 }
-
-
 
 function updateScores() {
     document.getElementById("score1").innerText = player1.score;
@@ -140,25 +135,22 @@ function updateScores() {
 }
 
 function handleBallOut() {
-    if (player1.score >= maxScore || player2.score >= maxScore) {
-        gameInProgress = false;
-        if (currentGame < maxGame) {
+
+        if (currentGame < totalGames) {
             currentGame++;
             resetGame();
-            document.getElementById("game").innerText = `Game ${currentGame} of ${maxGame}`;
+            document.getElementById("game").innerText = `Game ${currentGame} of ${totalGames}`;
         } else {
+            gameInProgress = false;
             showModal(`${player1.score > player2.score ? "Player 1" : "Player 2"} wins!`);
         }
-    } else {
-        resetGame();
-        document.getElementById("game").innerText = `Game ${currentGame} of ${maxGame}`;
-    }
+
 }
 
 function showModal(message) {
     const modal = document.getElementById("gameOverModal");
     const modalMessage = document.getElementById("modal-message");
-    
+
     modalMessage.innerText = message;
     modal.style.display = "block";
 }
@@ -179,5 +171,3 @@ function playAgain() {
     modal.style.display = "none";
     showOptionsModal();
 }
-
-
