@@ -78,5 +78,12 @@
     </div>
 
 </body>
+<script>
+    if (/Mobi/.test(navigator.userAgent)) {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.innerHTML = '<h1>Mobile access not supported</h1>';
+        });
+    }
+</script>
 
 </html>

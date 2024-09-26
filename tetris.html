@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tetris.css">
 
 
 </head>
@@ -14,9 +15,22 @@
         <h1>Tetris</h1>
     </div>
     <button id="go-back" onclick="voltar()">Go Back</button>
+    <div id="tetris" style="background-color: aliceblue;">
+        <div id="info">
+          <div id="next_shape"></div>
+          <p id="level">Level: <span></span></p>
+          <p id="lines">Lines: <span></span></p>
+          <p id="score">Score: <span></span></p>
+          <p id="time">Time: <span></span></p>
+          <button id="start">Start</button>
+          <p class="red">Press the Esc button to pause<span></span></p>
+        </div>
+        <div id="canvas"></div>
+      </div>
     <div class="footer">
         <p>Developed by: <a href="https://github.com/cristiano-nicolau">cristiano-nicolau</a> &copy; 2024</p>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/tetris.js"></script>
 </body>
 </html>

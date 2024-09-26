@@ -4,19 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnakeGame</title>
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="css/snake.css">
     <link rel="stylesheet" href="css/styles.css">
-
-
 </head>
+
 <body>
     <div class="header">
         <h1>Snake Game</h1>
     </div>
     <button id="go-back" onclick="voltar()">Go Back</button>
+    <button id="reset-game" onclick="playAgain()">Reset Game</button>
+
+    <div id="score"></div>
+    <canvas id="game-container" width="650" height="650"></canvas>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h1>Snake <span onclick="voltar()" class="close">&times;</span></h1>
+            <p id="modal-message"></p>
+            <button onclick="voltar()">End Game</button>
+            <button onclick="playAgain()">Play Again</button>
+        </div>
+    </div>
+    
     <div class="footer">
         <p>Developed by: <a href="https://github.com/cristiano-nicolau">cristiano-nicolau</a> &copy; 2024</p>
     </div>
+
+    <script src="js/snake.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
